@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Globe } from "lucide-react";
+import { ChevronRight, Globe, Search, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 interface URLAnalyzerProps {
@@ -20,13 +20,15 @@ export default function URLAnalyzer({ onAnalyze, initialUrl = "" }: URLAnalyzerP
   };
 
   return (
-    <div className="w-full mb-8">
-      <Card className="shadow-sm">
-        <CardContent className="p-6">
-          <h2 className="text-xl font-semibold mb-4">Analyze Website SEO Tags</h2>
+    <div className="w-full max-w-4xl mx-auto mb-8">
+      <Card className="shadow-md border-0 overflow-hidden">
+        <div className="bg-gradient-to-r from-primary/20 to-primary/5 px-6 py-4 border-b">
+          <h2 className="text-xl font-bold text-primary">Analyze Website SEO Tags</h2>
+        </div>
+        <CardContent className="p-6 pt-5">
           <p className="text-gray-600 mb-6">Enter any URL to analyze its meta tags, Open Graph, Twitter Cards and more.</p>
           
-          <form className="mb-6" onSubmit={handleSubmit}>
+          <form className="space-y-4 sm:space-y-0" onSubmit={handleSubmit}>
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="flex-grow relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -36,18 +38,40 @@ export default function URLAnalyzer({ onAnalyze, initialUrl = "" }: URLAnalyzerP
                   type="url"
                   id="siteUrl"
                   placeholder="https://example.com"
-                  className="pl-10"
+                  className="pl-10 pr-4 py-6 text-base"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   required
                 />
               </div>
-              <Button type="submit" className="py-6 px-6">
-                <span>Analyze</span>
-                <ChevronRight className="h-5 w-5 ml-2" />
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="py-6 px-6 transition-all duration-300 relative group"
+              >
+                <span className="flex items-center">
+                  <Search className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
+                  <span>Analyze</span>
+                  <ArrowRight className="h-4 w-4 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                </span>
               </Button>
             </div>
           </form>
+          
+          <div className="mt-5 flex flex-wrap gap-2 text-xs text-gray-500">
+            <span className="inline-flex items-center">
+              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-1"></span>
+              100% Free Analysis
+            </span>
+            <span className="inline-flex items-center">
+              <span className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-1"></span>
+              No Sign-up Required
+            </span>
+            <span className="inline-flex items-center">
+              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-1"></span>
+              Instant Results
+            </span>
+          </div>
         </CardContent>
       </Card>
     </div>
