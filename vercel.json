@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "client/**",
+      "src": "build.sh",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
@@ -23,7 +23,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/client/index.html"
+      "dest": "/index.html"
     }
   ]
 }

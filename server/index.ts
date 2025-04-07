@@ -67,7 +67,7 @@ registerRoutes(app).then(server => {
     // Setup Vite for development
     setupVite(app, server).then(() => {
       // Start the server
-      const port = process.env.PORT || 5000;
+      const port = parseInt(process.env.PORT || "5000", 10);
       server.listen(port, "0.0.0.0", () => {
         log(`serving on port ${port}`);
       });
